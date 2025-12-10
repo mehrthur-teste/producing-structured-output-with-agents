@@ -1,0 +1,3 @@
+# .gitignore
+AzureOpenAIAgentApi/bin/
+AzureOpenAIAgentApi/appsettings.json
