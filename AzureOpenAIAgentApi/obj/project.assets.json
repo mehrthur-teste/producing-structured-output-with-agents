@@ -55,6 +55,19 @@
           }
         }
       },
+      "Dapper/2.1.66": {
+        "type": "package",
+        "compile": {
+          "lib/net8.0/Dapper.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net8.0/Dapper.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.Agents.AI/1.0.0-preview.251204.1": {
         "type": "package",
         "dependencies": {
@@ -235,6 +248,19 @@
           }
         }
       },
+      "Npgsql/10.0.0": {
+        "type": "package",
+        "compile": {
+          "lib/net10.0/Npgsql.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net10.0/Npgsql.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "OpenAI/2.7.0": {
         "type": "package",
         "dependencies": {
@@ -375,6 +401,25 @@
         "lib/net8.0/Azure.Identity.xml",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "Dapper/2.1.66": {
+      "sha512": "/q77jUgDOS+bzkmk3Vy9SiWMaetTw+NOoPAV0xPBsGVAyljd5S6P+4RUW7R3ZUGGr9lDRyPKgAMj2UAOwvqZYw==",
+      "type": "package",
+      "path": "dapper/2.1.66",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Dapper.png",
+        "dapper.2.1.66.nupkg.sha512",
+        "dapper.nuspec",
+        "lib/net461/Dapper.dll",
+        "lib/net461/Dapper.xml",
+        "lib/net8.0/Dapper.dll",
+        "lib/net8.0/Dapper.xml",
+        "lib/netstandard2.0/Dapper.dll",
+        "lib/netstandard2.0/Dapper.xml",
+        "readme.md"
       ]
     },
     "Microsoft.Agents.AI/1.0.0-preview.251204.1": {
@@ -625,6 +670,25 @@
         "microsoft.identitymodel.abstractions.nuspec"
       ]
     },
+    "Npgsql/10.0.0": {
+      "sha512": "xZAYhPOU2rUIFpV48xsqhCx9vXs6Y+0jX2LCoSEfDFYMw9jtAOUk3iQsCnDLrFIv9NT3JGMihn7nnuZsPKqJmA==",
+      "type": "package",
+      "path": "npgsql/10.0.0",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "README.md",
+        "lib/net10.0/Npgsql.dll",
+        "lib/net10.0/Npgsql.xml",
+        "lib/net8.0/Npgsql.dll",
+        "lib/net8.0/Npgsql.xml",
+        "lib/net9.0/Npgsql.dll",
+        "lib/net9.0/Npgsql.xml",
+        "npgsql.10.0.0.nupkg.sha512",
+        "npgsql.nuspec",
+        "postgresql.png"
+      ]
+    },
     "OpenAI/2.7.0": {
       "sha512": "zodE/lrDzSUxgFzuHP+fiR56VBQZyy3H7le8VH9fiuB8SCgs7YSKpK/pwSpYZln3HVX6RyPDuALIOVPQMhnRFQ==",
       "type": "package",
@@ -768,7 +832,9 @@
     "net10.0": [
       "Azure.AI.OpenAI >= 2.7.0-beta.2",
       "Azure.Identity >= 1.17.1",
-      "Microsoft.Agents.AI.OpenAI >= 1.0.0-preview.251204.1"
+      "Dapper >= 2.1.66",
+      "Microsoft.Agents.AI.OpenAI >= 1.0.0-preview.251204.1",
+      "Npgsql >= 10.0.0"
     ]
   },
   "packageFolders": {
@@ -822,9 +888,17 @@
             "target": "Package",
             "version": "[1.17.1, )"
           },
+          "Dapper": {
+            "target": "Package",
+            "version": "[2.1.66, )"
+          },
           "Microsoft.Agents.AI.OpenAI": {
             "target": "Package",
             "version": "[1.0.0-preview.251204.1, )"
+          },
+          "Npgsql": {
+            "target": "Package",
+            "version": "[10.0.0, )"
           }
         },
         "imports": [

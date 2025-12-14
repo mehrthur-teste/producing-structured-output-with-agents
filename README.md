@@ -6,6 +6,8 @@ dotnet new web -n AzureOpenAIAgentApi
 dotnet add package Azure.AI.OpenAI --prerelease
 dotnet add package Azure.Identity
 dotnet add package Microsoft.Agents.AI.OpenAI --prerelease
+dotnet add package Dapper
+dotnet add package Npgsql
 
 Then use :
 dotnet run

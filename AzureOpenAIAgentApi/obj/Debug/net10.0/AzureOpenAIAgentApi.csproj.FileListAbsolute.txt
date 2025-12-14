@@ -49,3 +49,5 @@
 /Users/mac/my-own/producing-structured-output-with-agents/AzureOpenAIAgentApi/obj/Debug/net10.0/AzureOpenAIAgentApi.pdb
 /Users/mac/my-own/producing-structured-output-with-agents/AzureOpenAIAgentApi/obj/Debug/net10.0/AzureOpenAIAgentApi.genruntimeconfig.cache
 /Users/mac/my-own/producing-structured-output-with-agents/AzureOpenAIAgentApi/obj/Debug/net10.0/ref/AzureOpenAIAgentApi.dll
+/Users/mac/my-own/producing-structured-output-with-agents/AzureOpenAIAgentApi/bin/Debug/net10.0/Dapper.dll
+/Users/mac/my-own/producing-structured-output-with-agents/AzureOpenAIAgentApi/bin/Debug/net10.0/Npgsql.dll
