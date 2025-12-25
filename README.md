@@ -1,4 +1,4 @@
-# producing-structured-output-with-agents
+# Producing Structured Output With Agents
 This tutorial shows you how to produce structured output with an agent, using the Azure OpenAI Chat Completion service.
 
 ## API Endpoints
@@ -104,3 +104,46 @@ dotnet build
 dotnet run
 ```
 7. The API will be accessible at `http://localhost:5099`.
+
+## Review of the input models
+The input models for the `/agent-run` and `/sql-agent-run` endpoints are defined as follows:
+```csharp
+public class AgentRequest
+{
+    public string Prompt1 { get; set; }
+    public string Prompt2 { get; set; }
+    public string NameAssistant { get; set; }
+    public string Description { get; set; }
+    public string schemaName { get; set; }
+    public string schemaDescription { get; set; }
+    public string Intructions { get; set; }
+    public string Go { get; set; }
+}
+public class SqlAgentRequest
+{
+    public string Prompt1 { get; set; }
+    public string NameAssistant { get; set; }
+    public string Description { get; set; }
+    public string schemaName { get; set; }
+    public string schemaDescription { get; set; }
+    public string Intructions { get; set; }
+    public string Go { get; set; }
+}
+```
+These models capture the necessary information to configure and run the agents for structured output generation.
+
+## Describing each one fields
+- `Prompt1`: The primary input prompt for the agent.
+- `Prompt2`: An additional input prompt for the agent (used only in `/agent-run`).
+- `NameAssistant`: The name of the assistant to be used.
+- `Description`: A brief description of the assistant's purpose.
+- `schemaName`: The name of the schema for the structured output.
+- `schemaDescription`: A description of the schema for the structured output.
+- `Intructions`: Instructions for the agent on how to process the input prompts.
+- `Go`: The main instruction or query for the agent to execute.
+
+## Note
+We can use the Prompt1 field in to Prompt2 as dynamic variable
+## Note
+schemaName area the models wich we want that the agent kowns to processing the data.
+
