@@ -142,8 +142,8 @@ These models capture the necessary information to configure and run the agents f
 - `Intructions`: Instructions for the agent on how to process the input prompts.
 - `Go`: The main instruction or query for the agent to execute.
 
-## Note
+## Note for Prompt's fields
 We can use the Prompt1 field in to Prompt2 as dynamic variable
-## Note
+## Note for schemaName fields
 schemaName area the models wich we want that the agent kowns to processing the data.
 
