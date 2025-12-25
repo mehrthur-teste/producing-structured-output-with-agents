@@ -77,4 +77,30 @@ curl -X POST http://localhost:5099/sql-agent-run \
     }
 ]
 ```
-
+## Prerequisites
+- An Azure OpenAI resource with access to the Chat Completion service.
+- .NET 10.0 SDK or later installed on your machine.
+## Setup Instructions
+1. Clone the repository to your local machine.
+2. Navigate to the project directory.
+3. Open the `appsettings.json` file and configure your Azure OpenAI settings:
+```json
+ "AzureOpenAI": {
+    "Endpoint": "",
+    "ApiKey": "",
+    "DeploymentName": "gpt-4.1-mini"
+  },
+  ```
+4. Restore the project dependencies by running:
+   ```bash
+   dotnet restore
+   ```
+5. Build the project using:
+```bash
+dotnet build
+```
+6. Run the application with:
+```bash
+dotnet run
+```
+7. The API will be accessible at `http://localhost:5099`.
