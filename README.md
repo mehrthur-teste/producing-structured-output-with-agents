@@ -1,37 +1,80 @@
 # producing-structured-output-with-agents
-This tutorial step shows you how to produce structured output with an agent, where the agent is built on the Azure OpenAI Chat Completion service
+This tutorial shows you how to produce structured output with an agent, using the Azure OpenAI Chat Completion service.
+
 ## API Endpoints
 
-| Endpoint URL | Método | Objetivo | Payload (JSON) |
-|--------------|--------|----------|----------------|
-| `http://localhost:5099/health-check` | GET | Verificar se a API está funcionando corretamente | Nenhum |
-| `http://localhost:5099/agent-run` | POST | Executar um agente que fornece informações estruturadas sobre uma pessoa | ```json { "Prompt1": "Cristiano Ronaldo", "Prompt2": "Software Engineer", "NameAssistant": "HelpfulAssistant", "Description": "An AI assistant that provides structured information about people.", "schemaName": "PersonInfo", "schemaDescription": "Information about a person including their name, age, and occupation", "Intructions": "You are a helpful assistant that provides structured information about people.", "Go": "Please provide information about {chatConfig.Prompt1} see on the internet, is he {chatConfig.Prompt2} or not?" } ``` |
+| Endpoint URL | Method | Purpose | Payload (JSON) |
+|--------------|--------|---------|----------------|
+| `/health-check` | GET | Check if the API is running | None |
+| `/agent-run` | POST | Run an agent to provide structured information about a person | `{ "Prompt1": "...", "Prompt2": "...", "NameAssistant": "...", "Description": "...", "schemaName":"...", "schemaDescription":"...", "Intructions":"...", "Go": "..." }` |
+| `/sql-agent-run` | POST | Run an SQL assistant to generate PostgreSQL queries | `{ "Prompt1": "...", "NameAssistant": "...", "schemaName":"...", "schemaDescription":"...", "Description": "...", "Intructions":"...", "Go": "..." }` |
 
-### Exemplos de Requisição
+### Request Examples
 
 **Health Check:**
 ```bash
 curl -X GET http://localhost:5099/health-check
+```
 
+**Agent Run:**
+```bash
+curl -X POST http://localhost:5099/agent-run \
+-H "Content-Type: application/json" \
+-d '{
+    "Prompt1": "Cristiano Ronaldo",
+    "Prompt2": "Software Engineer",
+    "NameAssistant": "HelpfulAssistant",
+    "Description" : "An AI assistant that provides structured information about people.",
+    "schemaName": "PersonInfo",
+    "schemaDescription": "Information about a person including their name, age, and occupation",
+    "Intructions" : "You are a helpful assistant that provides structured information about people.",
+    "Go" : "Please provide information about {chatConfig.Prompt1} see on the internet, is he {chatConfig.Prompt2} or not?"
+}'
+```
 
+**Employees:**
+```bash
+curl -X POST http://localhost:5099/sql-agent-run \
+-H "Content-Type: application/json" \
+-d '{
+    "Prompt1": "Table is employee built as Name VARCHAR(100), Age INT, Occupation VARCHAR(100)",
+    "NameAssistant": "SQLHelpfulAssistant",
+    "Description" : "An AI assistant that query to inject sql postgres client.",
+    "schemaName": "PersonInfo",
+    "schemaDescription": "Information about a person including their name, age, and occupation becoming data base",
+    "Intructions" : "You are a helpful SQL assistant that provides structured information about people.",
+    "Go" : "Please provide a quickly and sample query -  select all employe who is not software enginner remember that - {chatConfig.Prompt1} ?"
+}'
+```
 
-Install
-chmod +x setup_sqlite.sh
-./setup_sqlite.sh
+## Response Examples
+**Health Check:**
+```json
+{
+    "status": "Hello World"
+}
+```
+**Agent Run:**
+```json
+{
+    "name": "Cristiano Ronaldo",
+    "age": 39,
+    "occupation": "Software Engineer"
+}
+```
+**SQL Agent Run:**
+```json
+[
+    {
+        "name": "Jane Smith",
+        "age": 28,
+        "occupation": "Data Analyst"
+    },
+    {
+        "name": "Alice Johnson",
+        "age": 35,
+        "occupation": "Product Manager"
+    }
+]
+```
 
-First you need to install these Nugets Packages:
-dotnet new web -n AzureOpenAIAgentApi 
-dotnet add package Azure.AI.OpenAI --prerelease
-dotnet add package Azure.Identity
-dotnet add package Microsoft.Agents.AI.OpenAI --prerelease
-dotnet add package Dapper
-dotnet add package Npgsql
-
-DataConnections?
-"DefaultConnection": "Host=localhost;Port=5432;Database=yourdatabase;Username=postgres;Password=yourpassword;"
-"DefaultConnection": "Data Source=database/app.db;"
-
-Then use :
-dotnet build
-dotnet clean
-dotnet run
