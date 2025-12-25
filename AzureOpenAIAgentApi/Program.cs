@@ -23,7 +23,7 @@ string deploymentName = builder.Configuration["AzureOpenAI:DeploymentName"] ?? t
 var app = builder.Build();
 
 
-app.MapGet("/", () => "Hello World!");
+app.MapGet("health-check/", () => "Hello World!");
 
 // Endpoint para pegar empregados com o filtro
 app.MapPatch("/employees", async (EmployeeRepository repository, HttpContext context) =>

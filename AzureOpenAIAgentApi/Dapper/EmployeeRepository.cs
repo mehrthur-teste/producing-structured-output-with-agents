@@ -1,6 +1,7 @@
 using Dapper;
 using Npgsql;  // Namespace do PostgreSQL
 using System.Data;
+using Microsoft.Data.Sqlite; // para SQLite
 using System.Threading.Tasks;
 
 public class EmployeeRepository
@@ -15,11 +16,23 @@ public class EmployeeRepository
     // Método para buscar todos os empregados
     public async Task<IEnumerable<PersonEntity>> GetEmployeesAsync(string filter)
     {
-        using (IDbConnection dbConnection = new NpgsqlConnection(_connectionString))
+        try
         {
-             dbConnection.Open();
-            var employees = await dbConnection.QueryAsync<PersonEntity>(filter);
-            return employees;
+            using (IDbConnection dbConnection = new NpgsqlConnection(_connectionString))
+            {
+                dbConnection.Open();
+                var employees = await dbConnection.QueryAsync<PersonEntity>(filter);
+                return employees;
+            } 
+        }
+        catch (Exception ex)
+        {
+            using (IDbConnection dbConnection = new SqliteConnection(_connectionString))
+            {
+                dbConnection.Open();
+                var employees = await dbConnection.QueryAsync<PersonEntity>(filter);
+                return employees;
+            }
         }
     }
 }

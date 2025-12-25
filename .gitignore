@@ -1,3 +1,5 @@
 # .gitignore
 AzureOpenAIAgentApi/bin/
 AzureOpenAIAgentApi/appsettings.json
+bin/
+obj/
